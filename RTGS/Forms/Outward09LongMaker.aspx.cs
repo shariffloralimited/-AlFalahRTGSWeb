@@ -18,6 +18,9 @@ namespace RTGS.Forms
             }
             if (!IsPostBack)
             {
+                FCSection.Visible = false;
+                ReqtxtForBillNumber.Visible = ReqtxtForLCNumber.Visible = ReqtxtForPartyName.Visible = ReqtxtForBranchID.Visible = false;
+
                 TransCodeDB tr = new TransCodeDB();
                 ddlCtgyPurpPrtry.DataSource = tr.GetTransCode("Pacs09");
                 ddlCtgyPurpPrtry.DataBind();
@@ -83,6 +86,16 @@ namespace RTGS.Forms
             lblCdtrAcctId.Text = pacs.CdtrAcctId;
             txtCdtrAcctTp.Text = pacs.CdtrAcctTp;
             txtInstrInf.Text = pacs.InstrInf;
+            if (lblSettlementCurrency.Text != "BDT")
+            {
+                FCSection.Visible = true;
+                ReqtxtForBillNumber.Visible = ReqtxtForLCNumber.Visible = ReqtxtForPartyName.Visible = ReqtxtForBranchID.Visible = true;
+                txtInstrInfBillNumber.Text = pacs.InstrInfBillNumber;
+                txtInstrInfLCNumber.Text = pacs.InstrInfLCNumber;
+                txtInstrInfPartyName.Text = pacs.InstrInfPartyName;
+                txtInstrInfBranchID.Text = pacs.InstrInfBranchID;
+                txtInstrInfOthersInformation.Text = pacs.InstrInfOthersInformation;
+            }
             //txtPmntRsn.Text = pacs.PmntRsn;
             LblReturnReason.Text = pacs.ReturnReason;
             ChkNoCBS.Checked = pacs.NoCBS;
@@ -90,6 +103,14 @@ namespace RTGS.Forms
         }
         protected void btnSend_Click(object sender, EventArgs e)
         {
+            if (lblSettlementCurrency.Text != "BDT")
+            {
+                if(txtInstrInfBillNumber.Text == "" || txtInstrInfLCNumber.Text == "" || txtInstrInfPartyName.Text == "" || txtInstrInfBranchID.Text == "")
+                {
+                    lblMsg.Text = "Bill No., LC No., Party Name or Branch ID cannot be empty for FC Transaction.";
+                    return;
+                }
+            }
             RTGSImporter.TeamBlueDB db = new RTGSImporter.TeamBlueDB();
             RTGSImporter.Pacs009 pacs = new RTGSImporter.Pacs009();
 
@@ -147,7 +168,14 @@ namespace RTGS.Forms
             pacs.CdtrAcctTp = txtCdtrAcctTp.Text;
 
             pacs.InstrInf = txtInstrInf.Text;
-
+            if (lblSettlementCurrency.Text != "BDT")
+            {
+                pacs.InstrInfBillNumber = txtInstrInfBillNumber.Text;
+                pacs.InstrInfLCNumber = txtInstrInfLCNumber.Text;
+                pacs.InstrInfPartyName = txtInstrInfPartyName.Text;
+                pacs.InstrInfBranchID = txtInstrInfBranchID.Text;
+                pacs.InstrInfOthersInformation = txtInstrInfOthersInformation.Text;
+            }
             pacs.PmntRsn = lblMsg.Text;
            
 

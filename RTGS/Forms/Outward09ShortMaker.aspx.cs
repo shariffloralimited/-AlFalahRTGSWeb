@@ -34,6 +34,11 @@ namespace RTGS.Forms
             {
                 Banks();
                 BindBranches(ddListReceivingBank.SelectedValue);
+                FCSection.Visible = false;
+                ReqtxtForBillNumber.Visible = false;
+                ReqtxtForLCNumber.Visible = false;
+                ReqtxtForPartyName.Visible = false;
+                ReqtxtForBranchID.Visible = false;
             }
             lblMsg.Text = "";
         }
@@ -63,12 +68,22 @@ namespace RTGS.Forms
             txtReceiverAccountNo.Text = pacs.DbtrAcctId;
             txtReasonForPayment.Text = pacs.InstrInf;
 
+            txtInstrInfBillNumber.Text = pacs.InstrInfBillNumber;
+            txtInstrInfLCNumber.Text = pacs.InstrInfLCNumber;
+            txtInstrInfPartyName.Text = pacs.InstrInfPartyName;
+            txtInstrInfBranchID.Text = pacs.InstrInfBranchID;
+            txtInstrInfOthersInformation.Text = pacs.InstrInfOthersInformation;
+
             ddlCurrency.Enabled = false;
             txtSettlmentAmount.Enabled = false;
             ddListReceivingBank.Enabled = false;
 
             ddListBranch.Enabled = false;
-
+            FCSection.Visible = false;
+            if (pacs.IntrBkSttlmCcy != "BDT")
+            {
+                FCSection.Visible = true;
+            }
         }
         protected void btnSave_Click(object sender, EventArgs e)
         {
@@ -163,6 +178,17 @@ namespace RTGS.Forms
             pacs.CdtrAcctTp = "1";
 
             pacs.InstrInf = txtReasonForPayment.Text;
+
+            if (ddlCurrency.SelectedItem.Text != "BDT")
+            {
+                FCSection.Visible = true;
+                pacs.InstrInfBillNumber = txtInstrInfBillNumber.Text;
+                pacs.InstrInfLCNumber = txtInstrInfLCNumber.Text;
+                pacs.InstrInfPartyName = txtInstrInfPartyName.Text;
+                pacs.InstrInfBranchID = txtInstrInfBranchID.Text;
+                pacs.InstrInfOthersInformation = txtInstrInfOthersInformation.Text;
+            }
+
             pacs.PmntRsn = InwardID;
             pacs.DeptId = Int32.Parse(Request.Cookies["DeptID"].Value);
             pacs.Maker = Request.Cookies["UserName"].Value;
@@ -245,8 +271,20 @@ namespace RTGS.Forms
         private void BindBranches(string BIC)
         {
             BranchesDB db = new BranchesDB();
-            ddListBranch.DataSource = db.GetBranchesPacs9ByBIC(BIC);
-            ddListBranch.DataBind();
+            var dt = db.GetBranchesPacs9ByBIC(BIC);
+            this.ddListBranch.DataSource = dt;
+            this.ddListBranch.DataBind();
+            if (ddlCurrency.SelectedValue.ToString() != "BDT" && string.IsNullOrEmpty(Request.Params["InwardID"]))
+            {
+                foreach (System.Data.DataRow row in dt.Rows)
+                {
+                    if (row.ItemArray[1].ToString().ToUpper().Contains("FOREX TRAN"))
+                    {
+                        this.ddListBranch.SelectedValue = row.ItemArray[0].ToString();
+                        break;
+                    }
+                }
+            }
             txtRoutingNo.Text = ddListBranch.SelectedValue;
         }
         private void BindAcctNos()
@@ -274,6 +312,14 @@ namespace RTGS.Forms
         }
         protected void ddlCurrency_SelectedIndexChanged(object sender, EventArgs e)
         {
+            this.BindBranches(this.ddListReceivingBank.SelectedValue);
+            FCSection.Visible = true;
+            ReqtxtForBranchID.Visible = ReqtxtForPartyName.Visible = ReqtxtForLCNumber.Visible = ReqtxtForBillNumber.Visible = true;
+            if (ddlCurrency.SelectedItem.Text == "BDT")
+            {
+                FCSection.Visible = false;
+                ReqtxtForBranchID.Visible = ReqtxtForPartyName.Visible = ReqtxtForLCNumber.Visible = ReqtxtForBillNumber.Visible = false;
+            }
         }
 
         protected void ddListReceivingBank_SelectedIndexChanged(object sender, EventArgs e)

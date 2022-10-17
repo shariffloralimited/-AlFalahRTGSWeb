@@ -400,6 +400,60 @@ namespace RTGS.Forms {
         protected global::System.Web.UI.WebControls.Label lblCdtrAcctTp;
         
         /// <summary>
+        /// FCSection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel FCSection;
+        
+        /// <summary>
+        /// lblInstrInfBillNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblInstrInfBillNumber;
+        
+        /// <summary>
+        /// lblInstrInfLcNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblInstrInfLcNumber;
+        
+        /// <summary>
+        /// lblInstrInfPartyName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblInstrInfPartyName;
+        
+        /// <summary>
+        /// lblInstrInfBranchID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblInstrInfBranchID;
+        
+        /// <summary>
+        /// lblInstrInfOthersInfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblInstrInfOthersInfo;
+        
+        /// <summary>
         /// lblInstrInf control.
         /// </summary>
         /// <remarks>

@@ -30,7 +30,7 @@
                                         <asp:Button ID="FICredit" Text="Financial Institution Credit Transfer (Single)" Width="350px" CssClass="btn btn-success" runat="server" OnClick="FICredit_Click" />
                                     </td>
                                     <td>
-                                        <asp:Button ID="FICreditBulk" Text="Financial Institution Credit Transfer (Bulk)" Width="350px" CssClass="btn btn-success" runat="server" OnClick="FICreditBulk_Click" />
+                                        <asp:Button ID="FICreditBulk" Enabled="false" Text="Financial Institution Credit Transfer (Bulk)" Width="350px" CssClass="btn btn-success" runat="server" OnClick="FICreditBulk_Click" />
                                     </td>
                                 </tr>
                                 

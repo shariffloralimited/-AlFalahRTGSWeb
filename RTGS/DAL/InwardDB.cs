@@ -129,6 +129,38 @@ namespace RTGS.DAC
             return dt;
         }
 
+        public DataTable GetInwardSettlementPacs09(int BranchId, string CCy, int StatusID, string SttlmDt)
+        {
+            SqlConnection myConnection = new SqlConnection(AppVariables.ConStr);
+            SqlDataAdapter myCommand = new SqlDataAdapter("RTGS_GetInwardSettlementPacs09", myConnection);
+            myCommand.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+            SqlParameter parameterBranchId = new SqlParameter("@BranchId", SqlDbType.Int, 4);
+            parameterBranchId.Value = BranchId;
+            myCommand.SelectCommand.Parameters.Add(parameterBranchId);
+
+            SqlParameter parameterCCy = new SqlParameter("@CCy", SqlDbType.VarChar, 3);
+            parameterCCy.Value = CCy;
+            myCommand.SelectCommand.Parameters.Add(parameterCCy);
+
+            SqlParameter parameterStatusID = new SqlParameter("@StatusID", SqlDbType.Int, 4);
+            parameterStatusID.Value = StatusID;
+            myCommand.SelectCommand.Parameters.Add(parameterStatusID);
+
+            SqlParameter parameterSttlmDt = new SqlParameter("@SttlmDt", SqlDbType.VarChar, 10);
+            parameterSttlmDt.Value = SttlmDt;
+            myCommand.SelectCommand.Parameters.Add(parameterSttlmDt);
+            myConnection.Open();
+
+            DataTable dt = new DataTable();
+            myCommand.Fill(dt);
+
+            myConnection.Close();
+            myCommand.Dispose();
+            myConnection.Dispose();
+            return dt;
+        }
+
         public DataTable GetInwardDeptSettlement(int DeptID, string CCy, int StatusID, string SttlmDt)
         {
             SqlConnection myConnection = new SqlConnection(AppVariables.ConStr);

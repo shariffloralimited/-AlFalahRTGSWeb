@@ -161,6 +161,14 @@
                             <span>Daily Transactions</span>
                         </a>
                     </li>
+                    
+                    <li>
+                        <a href="Pacs09Transactions.aspx">
+                            <i class="glyphicon glyphicon-list"></i>
+                            <span>Pacs09 Transactions</span>
+                        </a>
+                    </li>
+
                     <li>
                         <a href="BBInward.aspx">
                             <i class="fa fa-comments-o"></i>

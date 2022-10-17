@@ -71,6 +71,18 @@ namespace RTGS.Forms
             lblCdtrAcctId.Text = pacs.CdtrAcctId;
             lblCdtrAcctTp.Text = pacs.CdtrAcctTp;
             lblInstrInf.Text = pacs.InstrInf;
+
+            this.FCSection.Visible = false;
+            if (pacs.IntrBkSttlmCcy != "BDT")
+            {
+                this.FCSection.Visible = true;
+                this.lblInstrInfBillNumber.Text = pacs.InstrInfBillNumber;
+                this.lblInstrInfLcNumber.Text = pacs.InstrInfLCNumber;
+                this.lblInstrInfPartyName.Text = pacs.InstrInfPartyName;
+                this.lblInstrInfBranchID.Text = pacs.InstrInfBranchID;
+                this.lblInstrInfOthersInfo.Text = pacs.InstrInfOthersInformation;
+            }
+
             lblPmntRsn.Text = pacs.PmntRsn;
 
             string RoleCD = Request.Cookies["RoleCD"].Value;

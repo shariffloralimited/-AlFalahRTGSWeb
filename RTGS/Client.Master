@@ -145,6 +145,12 @@
                     </li>
                     
                     
+                    <li>
+                        <a href="Pacs09Transactions.aspx">
+                            <i class="glyphicon glyphicon-list"></i>
+                            <span>Pacs09 Transactions</span>
+                        </a>
+                    </li>
                     
                     <li>
                         <a href="../Messages.aspx">

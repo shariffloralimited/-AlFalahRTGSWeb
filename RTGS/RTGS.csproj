@@ -197,6 +197,7 @@
     <Content Include="packages\Respond.1.2.0\content\Scripts\respond.min.js" />
     <Content Include="packages\WebGrease.1.5.2\lib\WebGrease.dll" />
     <Content Include="packages\WebGrease.1.5.2\tools\WG.exe" />
+    <Content Include="Pacs09Transactions.aspx" />
     <Content Include="ReportViewerMenu.aspx" />
     <Content Include="BranchMenu.aspx" />
     <Content Include="BranchMessages.aspx" />
@@ -611,6 +612,13 @@
     </Compile>
     <Compile Include="OutwardBatchStatus.aspx.designer.cs">
       <DependentUpon>OutwardBatchStatus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pacs09Transactions.aspx.cs">
+      <DependentUpon>Pacs09Transactions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pacs09Transactions.aspx.designer.cs">
+      <DependentUpon>Pacs09Transactions.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

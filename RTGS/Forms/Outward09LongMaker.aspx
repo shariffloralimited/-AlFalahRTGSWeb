@@ -581,6 +581,42 @@
                                         <div class="panel-heading"><h5 class="panel-title"><span class="caret"></span>&nbsp;&nbsp;Instruction For Next Agent</h5></div>
                                         <div class="panel-body">
                                             <table class="table table-striped table-hover">
+                                                <asp:Panel runat="server" ID="FCSection">
+                                                <tr>
+                                                    <td>Bill Number(FCY)</td>
+                                                    <td>
+                                                        <asp:TextBox runat="server" ID="txtInstrInfBillNumber" placeholder="Max35Text" Width="300" CssClass="form-control-small" MaxLength="35" />
+                                                        <asp:RequiredFieldValidator ID="ReqtxtForBillNumber" runat="server" ControlToValidate="txtInstrInfBillNumber" CssClass="normal-red" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>LC Number(FCY)</td>
+                                                    <td>
+                                                        <asp:TextBox runat="server" ID="txtInstrInfLCNumber" placeholder="Max35Text" Width="300" CssClass="form-control-small" MaxLength="35" />
+                                                        <asp:RequiredFieldValidator ID="ReqtxtForLCNumber" runat="server" ControlToValidate="txtInstrInfLCNumber" CssClass="normal-red" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Party Name(FCY)</td>
+                                                    <td>
+                                                        <asp:TextBox runat="server" ID="txtInstrInfPartyName" placeholder="Max35Text" Width="300" CssClass="form-control-small" MaxLength="35" />
+                                                        <asp:RequiredFieldValidator ID="ReqtxtForPartyName" runat="server" ControlToValidate="txtInstrInfPartyName" CssClass="normal-red" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Branch ID(FCY)</td>
+                                                    <td>
+                                                        <asp:TextBox runat="server" ID="txtInstrInfBranchID" TextMode="Number" placeholder="Max35Text" Width="300" CssClass="form-control-small" MaxLength="35" />
+                                                        <asp:RequiredFieldValidator ID="ReqtxtForBranchID" runat="server" ControlToValidate="txtInstrInfBranchID" CssClass="normal-red" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Others Information(FCY)</td>
+                                                    <td>
+                                                        <asp:TextBox runat="server" ID="txtInstrInfOthersInformation" placeholder="Max35Text" Width="300" CssClass="form-control-small" MaxLength="35" />
+                                                    </td>
+                                                </tr>
+                                                </asp:Panel>
                                                 <tr>
                                                     <td>Instruction Information</td>
                                                     <td>
@@ -634,8 +670,8 @@
                                         <div class="panel-body">
                                             <div class="form-group">
                                             <div class="col-md-4"><div style="margin-left:200px"><asp:Button ID="btnSend" Text="Send" runat="server" CssClass="btn btn-success" OnClick="btnSend_Click" /></div></div>
-                                            <div class="col-md-4"><div style="margin-left:100px"><asp:Button ID="btnDelete" Text="Delete" runat="server" CssClass="btn btn-danger" OnClick="btnDelete_Click" /></div></div>
-                                            <div class="col-md-4"><div style="margin-left:10px"><asp:Button ID="btnCancelTrans" Text="Cancel" runat="server" CssClass="btn btn-info" OnClick="btnCancelTrans_Click" /></div></div>
+                                            <div class="col-md-4"><div style="margin-left:100px"><asp:Button ID="btnDelete" CausesValidation="false" Text="Delete" runat="server" CssClass="btn btn-danger" OnClick="btnDelete_Click" /></div></div>
+                                            <div class="col-md-4"><div style="margin-left:10px"><asp:Button ID="btnCancelTrans" CausesValidation="false" Text="Cancel" runat="server" CssClass="btn btn-info" OnClick="btnCancelTrans_Click" /></div></div>
                                             </div>
                                         </div>
                                     </div>

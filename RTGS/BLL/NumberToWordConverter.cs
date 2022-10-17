@@ -97,10 +97,10 @@ namespace FMPS.BLL
                 Paisa = GetWord(Paisa);
                 if (Paisa != "")
                 {
-                    Paisa = "and " + Paisa + " Paisa";
+                    Paisa = "and " + Paisa;
                 }
             }
-            string returnstring = HundredCrore + " "+ Crore + " " + Lac + " " + Thousand + " " + Hundred.Trim() + " " + Ten + " Taka " + Paisa + " Only";
+            string returnstring = HundredCrore + " "+ Crore + " " + Lac + " " + Thousand + " " + Hundred.Trim() + " " + Ten + " "+ Paisa + " Only";
             return returnstring.Trim().Replace("   ", " ").Replace("  ", " ");
         }
         private string GetWord(string ij)
